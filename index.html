@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Model Viewer Test</title>
+    <title>Model Viewer V2</title>
     <style>
         body {
             background: linear-gradient(to bottom, #3498db, #2c3e50);
@@ -48,21 +48,12 @@
 </head>
 <body>
     <h1>Bottle Gallery</h1>
-    <button onclick="window.location.href='secondtest.html'">Go to second test</button>
-	<button onclick="window.location.href='automationtest.html'">Go to automation test</button>
+	
+	<!-- BUTTONS FOR LATER USE -->
+    <!-- <button onclick="window.location.href='secondtest.html'">Go to second test</button> -->
+	
     <div>
-        <model-viewer
-            id="canton_bottle"
-            src="assets/models/canton_Bottle.glb"
-            alt="Canton Bottle 3D Model"
-            camera-controls touch-action="pan-y"
-            ar
-            ar-modes="webxr scene-viewer quick-look"
-            ar environment-image="assets/environment/poly_haven_studio_1k.hdr">
-            <div class="controls">
-                <div>Variant: <select id="variant"></select></div>
-            </div>
-        </model-viewer>
+       
         <model-viewer
 		    id="soda_can"
             src="assets/models/soda_can.glb"
@@ -76,41 +67,7 @@
                 <div>Variant: <select id="variant_soda_can"></select></div>
             </div>
         </model-viewer>
-		<model-viewer
-		    id="mayo_bottle"
-            src="assets/models/mayo_bottle.glb"
-            alt="Mayo bottle 3D Model"
-            camera-controls touch-action="pan-y"
-            ar
-            ar-modes="webxr scene-viewer quick-look"
-            ar environment-image="assets/environment/poly_haven_studio_1k.hdr">
-			 <div class="controls">
-                <div>Variant: <select id="variant_mayo_bottle"></select></div>
-            </div>
-        </model-viewer>
-        <script>
-            const modelViewerBottle = document.querySelector("model-viewer#canton_bottle");
-            const select = document.querySelector('#variant');
-
-            modelViewerBottle.addEventListener('load', () => {
-                const names = modelViewerBottle.availableVariants;
-                for (const name of names) {
-                    const option = document.createElement('option');
-                    option.value = name;
-                    option.textContent = name;
-                    select.appendChild(option);
-                }
-                // Adds a default option.
-                const option = document.createElement('option');
-                option.value = 'default';
-                option.textContent = 'Default';
-                select.appendChild(option);
-            });
-
-            select.addEventListener('input', (event) => {
-                modelViewerBottle.variantName = event.target.value === 'default' ? null : event.target.value;
-            });
-        </script>
+		
 		<script>
         const modelViewerSodaCan = document.querySelector("model-viewer#soda_can");
         const selectSodaCan = document.querySelector('#variant_soda_can');
@@ -135,30 +92,7 @@
             modelViewerSodaCan.variantName = event.target.value === 'default' ? null : event.target.value;
         });
     </script>
-	<script>
-        const modelViewerMayoBottle = document.querySelector("model-viewer#mayo_bottle");
-        const selectMayoBottle = document.querySelector('#variant_mayo_bottle');
-
-        modelViewerMayoBottle.addEventListener('load', () => {
-            const names = modelViewerMayoBottle.availableVariants;
-            for (const name of names) {
-                const option = document.createElement('option');
-                option.value = name;
-                option.textContent = name;
-                selectMayoBottle.appendChild(option);
-            }
-
-            // Adds a default option.
-            const option = document.createElement('option');
-            option.value = 'default';
-            option.textContent = 'Default';
-            selectMayoBottle.appendChild(option);
-        });
-
-        selectMayoBottle.addEventListener('input', (event) => {
-            modelViewerMayoBottle.variantName = event.target.value === 'default' ? null : event.target.value;
-        });
-    </script>
+	
 		    
     </div>
 </body>
