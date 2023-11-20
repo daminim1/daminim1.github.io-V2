@@ -10,6 +10,11 @@
             margin: 0;
             font-family: 'Arial', sans-serif;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
         
         h1 {
@@ -33,7 +38,19 @@
             margin: 0 0 0 10px;
             background-color: unset;
         }
-        
+
+        #codeInputContainer {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
         button {
             padding: 10px 20px;
             font-size: 16px;
@@ -48,14 +65,10 @@
 </head>
 <body>
     <h1>Bottle Gallery</h1>
-	
-	<!-- BUTTONS FOR LATER USE -->
-    <!-- <button onclick="window.location.href='secondtest.html'">Go to second test</button> -->
-	
+
     <div>
-       
         <model-viewer
-		    id="soda_can"
+            id="soda_can"
             src="assets/models/soda_can.glb"
             alt="Soda Can 3D Model"
             camera-controls touch-action="pan-y"
@@ -63,37 +76,23 @@
             ar
             ar-modes="scene-viewer quick-look"
             ar environment-image="assets/environment/poly_haven_studio_1k.hdr">
-			 <div class="controls">
+            <div class="controls">
                 <div>Variant: <select id="variant_soda_can"></select></div>
             </div>
         </model-viewer>
-		
-		<script>
-        const modelViewerSodaCan = document.querySelector("model-viewer#soda_can");
-        const selectSodaCan = document.querySelector('#variant_soda_can');
-
-        modelViewerSodaCan.addEventListener('load', () => {
-            const names = modelViewerSodaCan.availableVariants;
-            for (const name of names) {
-                const option = document.createElement('option');
-                option.value = name;
-                option.textContent = name;
-                selectSodaCan.appendChild(option);
-            }
-
-            // Adds a default option.
-            const option = document.createElement('option');
-            option.value = 'default';
-            option.textContent = 'Default';
-            selectSodaCan.appendChild(option);
-        });
-
-        selectSodaCan.addEventListener('input', (event) => {
-            modelViewerSodaCan.variantName = event.target.value === 'default' ? null : event.target.value;
-        });
-    </script>
-	
-		    
     </div>
+
+    <div id="codeInputContainer">
+        <input type="text" id="codeInput" placeholder="Enter Code">
+        <button onclick="checkCode()">Submit Code</button>
+    </div>
+
+    <script>
+        function checkCode() {
+            const codeInput = document.getElementById('codeInput').value;
+            // You can add logic here to redirect to another HTML page based on the entered code.
+            console.log('Entered Code:', codeInput);
+        }
+    </script>
 </body>
 </html>
