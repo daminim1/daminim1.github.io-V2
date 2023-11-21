@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Model Viewer V2</title>
+    <title>Bottle Gallery</title>
     <style>
         body {
             background: linear-gradient(to bottom, #3498db, #2c3e50);
@@ -65,18 +65,31 @@
 </head>
 <body>
     <h1>Bottle Gallery</h1>
-    <button onclick="window.location.href='pages/Canton_Page.html'">testing page</button>
+    <button onclick="window.location.href='pages/Canton_Page.html'">Testing Page</button>
 
     <div id="codeInputContainer">
         <input type="text" id="codeInput" placeholder="Enter Code">
         <button onclick="checkCode()">Submit Code</button>
+        <p id="errorText" style="color: red; display: none;">Invalid Code</p>
     </div>
 
     <script>
         function checkCode() {
             const codeInput = document.getElementById('codeInput').value;
-            // You can add logic here to redirect to another HTML page based on the entered code.
-            console.log('Entered Code:', codeInput);
+            const validCodes = {
+                'code1': 'pages/Canton_Page.html',
+                'code2': 'pages/Page2.html',
+                // Add more codes and corresponding pages as needed
+            };
+
+            const pageToRedirect = validCodes[codeInput];
+            const errorText = document.getElementById('errorText');
+
+            if (pageToRedirect) {
+                window.location.href = pageToRedirect;
+            } else {
+                errorText.style.display = 'block';
+            }
         }
     </script>
 </body>
