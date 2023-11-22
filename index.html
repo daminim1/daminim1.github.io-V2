@@ -72,6 +72,20 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
         }
+
+        /* Style for the Admin Modal */
+        #adminModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+        }
     </style>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
 </head>
@@ -92,8 +106,17 @@
     <div id="adminWindow">
         <!-- Add admin tools here -->
         <p>This is the Admin Window</p>
-        <button onclick="createNewHTML()">Create New HTML</button>
+        <button onclick="openCreateModal()">Create New HTML</button>
         <button onclick="modifyExistingHTML()">Modify Existing HTML</button>
+    </div>
+
+    <!-- Admin Modal -->
+    <div id="adminModal">
+        <h2>Create New HTML</h2>
+        <label for="glbInput">GLB File:</label>
+        <input type="file" id="glbInput" accept=".glb">
+        <button onclick="createNewHTML()">Create</button>
+        <button onclick="closeCreateModal()">Cancel</button>
     </div>
 
     <script>
@@ -107,6 +130,16 @@
         function toggleAdminWindow() {
             const adminWindow = document.getElementById('adminWindow');
             adminWindow.style.display = adminWindow.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function openCreateModal() {
+            const adminModal = document.getElementById('adminModal');
+            adminModal.style.display = 'block';
+        }
+
+        function closeCreateModal() {
+            const adminModal = document.getElementById('adminModal');
+            adminModal.style.display = 'none';
         }
 
         function checkCode() {
@@ -129,7 +162,14 @@
 
         // Dummy functions for admin tools (replace with actual implementation)
         function createNewHTML() {
-            console.log('Creating new HTML...');
+            const glbInput = document.getElementById('glbInput');
+            const glbFile = glbInput.files[0];
+            
+            // Do something with the GLB file (upload to server, etc.)
+            console.log('Creating new HTML with GLB file:', glbFile);
+            
+            // Close the modal
+            closeCreateModal();
         }
 
         function modifyExistingHTML() {
