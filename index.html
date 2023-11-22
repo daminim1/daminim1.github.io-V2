@@ -59,18 +59,50 @@
             border: none;
             cursor: pointer;
         }
-        
+
+        #adminButton {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: none; /* initially hidden */
+        }
+
+        #adminWindow {
+            position: fixed;
+            top: 50px;
+            right: 50px;
+            background-color: #fff;
+            padding: 20px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            display: none; /* initially hidden */
+        }
     </style>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
 </head>
 <body>
     <h1>Bottle Gallery</h1>
-    <!-- <button onclick="window.location.href='pages/Canton_Page.html'">Testing Page</button> -->
+    
+    <!-- Admin Button -->
+    <button id="adminButton" onclick="toggleAdminWindow()">Admin</button>
 
+    <!-- Code Input Container -->
     <div id="codeInputContainer">
         <input type="text" id="codeInput" placeholder="Enter Code">
         <button onclick="checkCode()">Submit Code</button>
         <p id="errorText" style="color: red; display: none;">Invalid Code</p>
+    </div>
+
+    <!-- Admin Window -->
+    <div id="adminWindow">
+        <!-- Add admin tools here -->
+        <p>This is the Admin Window</p>
+        <button onclick="createNewHTML()">Create New HTML</button>
+        <button onclick="modifyExistingHTML()">Modify Existing HTML</button>
     </div>
 
     <script>
@@ -90,6 +122,21 @@
             } else {
                 errorText.style.display = 'block';
             }
+        }
+
+        function toggleAdminWindow() {
+            const adminWindow = document.getElementById('adminWindow');
+            adminWindow.style.display = adminWindow.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function createNewHTML() {
+            // Add logic to create new HTML
+            console.log('Creating New HTML');
+        }
+
+        function modifyExistingHTML() {
+            // Add logic to modify existing HTML
+            console.log('Modifying Existing HTML');
         }
     </script>
 </body>
