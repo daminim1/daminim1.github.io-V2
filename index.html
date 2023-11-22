@@ -16,7 +16,7 @@
             justify-content: center;
             height: 100vh;
         }
-        
+
         h1 {
             text-align: center;
             background-color: #ff7038;
@@ -24,14 +24,14 @@
             padding: 10px;
             margin: 0;
         }
-    
+
         div {
             display: flex;
             flex-direction: row;
             justify-content: flex-start;
             padding: 20px;
         }
-        
+
         model-viewer {
             width: 350px;
             height: 525px;
@@ -60,33 +60,24 @@
             cursor: pointer;
         }
 
-        #adminButton {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            display: none; /* initially hidden */
-        }
-
+        /* Style for the Admin Window */
         #adminWindow {
+            display: none;
             position: fixed;
-            top: 50px;
-            right: 50px;
+            top: 20px;
+            right: 20px;
             background-color: #fff;
             padding: 20px;
-            border: 2px solid #3498db;
-            border-radius: 5px;
-            display: none; /* initially hidden */
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
         }
     </style>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
 </head>
 <body>
     <h1>Bottle Gallery</h1>
-    
+
     <!-- Admin Button -->
     <button id="adminButton" onclick="toggleAdminWindow()">Admin</button>
 
@@ -106,6 +97,18 @@
     </div>
 
     <script>
+        // Simplified condition for demonstration purposes
+        const isAdmin = true; // Change this condition based on your requirements
+
+        // Set the initial visibility of the admin button
+        const adminButton = document.getElementById('adminButton');
+        adminButton.style.display = isAdmin ? 'block' : 'none';
+
+        function toggleAdminWindow() {
+            const adminWindow = document.getElementById('adminWindow');
+            adminWindow.style.display = adminWindow.style.display === 'none' ? 'block' : 'none';
+        }
+
         function checkCode() {
             const codeInput = document.getElementById('codeInput').value;
             const validCodes = {
@@ -124,19 +127,13 @@
             }
         }
 
-        function toggleAdminWindow() {
-            const adminWindow = document.getElementById('adminWindow');
-            adminWindow.style.display = adminWindow.style.display === 'none' ? 'block' : 'none';
-        }
-
+        // Dummy functions for admin tools (replace with actual implementation)
         function createNewHTML() {
-            // Add logic to create new HTML
-            console.log('Creating New HTML');
+            console.log('Creating new HTML...');
         }
 
         function modifyExistingHTML() {
-            // Add logic to modify existing HTML
-            console.log('Modifying Existing HTML');
+            console.log('Modifying existing HTML...');
         }
     </script>
 </body>
