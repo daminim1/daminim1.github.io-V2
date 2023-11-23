@@ -97,9 +97,10 @@
 
     <!-- Code Input Container -->
     <div id="codeInputContainer">
+        <input type="text" id="usernameInput" placeholder="Enter Username">
         <input type="text" id="codeInput" placeholder="Enter Code">
-        <button onclick="checkCode()">Submit Code</button>
-        <p id="errorText" style="color: red; display: none;">Invalid Code</p>
+        <button onclick="checkCredentials()">Submit</button>
+        <p id="errorText" style="color: red; display: none;">Invalid Credentials</p>
     </div>
 
     <!-- Admin Window -->
@@ -142,19 +143,20 @@
             adminModal.style.display = 'none';
         }
 
-        function checkCode() {
+        function checkCredentials() {
+            const usernameInput = document.getElementById('usernameInput').value;
             const codeInput = document.getElementById('codeInput').value;
-            const validCodes = {
-                'code1': 'pages/Canton_Page.html',
-                'code2': 'pages/Page2.html',
-                // Add more codes and corresponding pages as needed
+            const validCredentials = {
+                'Canton2320': '29*ab2ega=kG8C',
+                // Add more usernames and codes as needed
             };
 
-            const pageToRedirect = validCodes[codeInput];
+            const isValid = validCredentials[usernameInput] === codeInput;
             const errorText = document.getElementById('errorText');
 
-            if (pageToRedirect) {
-                window.location.href = pageToRedirect;
+            if (isValid) {
+                // Redirect to the page
+                window.location.href = 'pages/Canton_Page.html';
             } else {
                 errorText.style.display = 'block';
             }
